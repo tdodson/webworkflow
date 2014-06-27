@@ -59,4 +59,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 4, ../components/sass/_base.scss */
 body {
   background: #819090;
-  font-family: Lato, sans; }
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 150%; }
+
+/* line 11, ../components/sass/_base.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* Link Styling */
+/* line 17, ../components/sass/_base.scss */
+a:link {
+  text-decoration: none;
+  color: #991f1f; }
+/* line 21, ../components/sass/_base.scss */
+a:hover, a:active {
+  text-decoration: underline; }
+/* line 24, ../components/sass/_base.scss */
+a:focus {
+  outline: none; }
+/* line 27, ../components/sass/_base.scss */
+a:visited {
+  color: #873131; }

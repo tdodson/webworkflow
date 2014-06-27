@@ -3,5 +3,28 @@
 
 body {
 	background: $lightgreen;
-	font-family: $font-primary;
+	font-family: $font-sans;
+	font-size: 1.2rem;
+	line-height: 150%
+}
+
+#{headings()} {
+	font-family: $font-sans;
+}
+
+/* Link Styling */
+a {
+	&:link {
+		text-decoration: none;
+		color: $baseRed;
+	}
+	&:hover, &:active {
+		text-decoration:underline;
+	}
+	&:focus {
+		outline: none;
+	}
+	&:visited {
+		color: desaturate($baseRed, 20%);
+	}
 }
