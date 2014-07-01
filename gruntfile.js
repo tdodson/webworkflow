@@ -11,6 +11,14 @@ module.exports = function(grunt) {
 				} //files
 			} //my_target
 		}, //uglify
+		
+		jshint: {
+			js_target: {
+				src: ['_/components/js/*.js']
+			}, //js_target
+			options: { force: true }, //report JSHint errors but not fail the task
+		}, //jshint
+
 		compass: {
 			dev: {
 				options: {
@@ -32,14 +40,7 @@ module.exports = function(grunt) {
 				files: ['_/components/sass/*.scss'],
 				tasks: ['compass:dev']
 			} //sass
-		}, //watch
-		
-		jshint: {
-			js_target: {
-				src: ['_/components/js/*.js']
-			}, //js_target
-			options: { force: true }, //report JSHint errors but not fail the task
-		} //jshint
+		} //watch
 	}) //initConfig
 	grunt.registerTask('default', 'watch');
 } //exports
