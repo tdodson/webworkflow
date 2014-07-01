@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.initConfig ({
 		uglify: {
 			my_target: {
@@ -17,12 +18,12 @@ module.exports = function(grunt) {
 				} //options
 			} //dev
 		}, //compass
-		
+
 		watch: {
 			options: { livereload: true }, // reloads browser on save
 			scripts: {
 				files: ['_/components/js/*.js'],
-				tasks: ['uglify']
+				tasks: ['jshint', 'uglify']
 			}, //scripts
 			html: {
 				files: ['*.html']
@@ -31,7 +32,14 @@ module.exports = function(grunt) {
 				files: ['_/components/sass/*.scss'],
 				tasks: ['compass:dev']
 			} //sass
-		} //watch
+		}, //watch
+		
+		jshint: {
+			js_target: {
+				src: ['_/components/js/*.js']
+			}, //js_target
+			options: { force: true }, //report JSHint errors but not fail the task
+		} //jshint
 	}) //initConfig
 	grunt.registerTask('default', 'watch');
 } //exports
