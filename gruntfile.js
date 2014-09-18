@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-cssc');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.initConfig ({
@@ -43,8 +44,29 @@ module.exports = function(grunt) {
 	    build: {
 	        src: '_/css/style.css',
 	        dest: '_/css/style.css'
-	    } //cssmin
-},
+	    } //build
+		}, //cssmin
+
+		htmlhint: {
+            build: {
+                options: {
+                  'tag-pair': true,
+// Force tags to have a closing pair
+                  'tagname-lowercase': true,
+// Force tags to be lowercase
+                  'attr-lowercase': true,
+// Force attribute names to be lowercase e.g. <div id="header"> is invalid
+                  'attr-value-double-quotes': true,
+// Force attributes to have double quotes rather than single
+                  'spec-char-escape': true,
+// Force special characters to be escaped
+                  'id-unique': true
+// Prevent using the same ID multiple times in a document 
+                }, //options
+                src: ['*.html']
+            } //build
+		}, //htmlhint
+
 		watch: {
 			options: { livereload: true }, // reloads browser on save
 			scripts: {
@@ -52,7 +74,8 @@ module.exports = function(grunt) {
 				tasks: ['jshint', 'uglify']
 			}, //scripts
 			html: {
-				files: ['*.html']
+				files: ['*.html'],
+				tasks: ['htmlhint:build']
 			}, //html
 			sass: {
 				files: ['_/components/sass/*.scss'],
