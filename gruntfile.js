@@ -3,6 +3,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-cssc');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.initConfig ({
 		uglify: {
 			my_target: {
@@ -27,6 +29,22 @@ module.exports = function(grunt) {
 			} //dev
 		}, //compass
 
+		cssc: {
+	    build: {
+	       options: {
+	        consolidateViaDeclarations: true,
+	        consolidateViaSelectors:    true,
+	        consolidateMediaQueries:    true
+	      }
+	    } //build
+  }, //cssc 
+
+  	cssmin: {
+	    build: {
+	        src: '_/css/style.css',
+	        dest: '_/css/style.css'
+	    } //cssmin
+},
 		watch: {
 			options: { livereload: true }, // reloads browser on save
 			scripts: {
@@ -35,10 +53,10 @@ module.exports = function(grunt) {
 			}, //scripts
 			html: {
 				files: ['*.html']
-			},
+			}, //html
 			sass: {
 				files: ['_/components/sass/*.scss'],
-				tasks: ['compass:dev']
+				tasks: ['compass:dev', 'cssc:build', 'cssmin:build']
 			} //sass
 		} //watch
 	}) //initConfig
