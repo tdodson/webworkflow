@@ -4,8 +4,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-htmlhint');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-cssc');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+
 	grunt.initConfig ({
 		uglify: {
 			my_target: {
@@ -39,6 +41,15 @@ module.exports = function(grunt) {
 	      }
 	    } //build
   }, //cssc 
+
+  	autoprefixer: {
+  		build: {
+  			expand: true,
+	      flatten: true,
+	      src: '_/css/style.css', 
+	      dest: '_/css'
+  		} //build
+  	}, //autoprefixer
 
   	cssmin: {
 	    build: {
@@ -79,7 +90,7 @@ module.exports = function(grunt) {
 			}, //html
 			sass: {
 				files: ['_/components/sass/*.scss'],
-				tasks: ['compass:dev', 'cssc:build', 'cssmin:build']
+				tasks: ['compass:dev', 'autoprefixer:build', 'cssc:build', 'cssmin:build']
 			} //sass
 		} //watch
 	}) //initConfig

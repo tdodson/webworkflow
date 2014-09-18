@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "css-condense": "0.0.6",
+    "grunt-autoprefixer": "^1.0.1",
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-cssc": "^0.2.6",
